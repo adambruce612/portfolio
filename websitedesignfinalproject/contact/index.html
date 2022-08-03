@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Contact</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Local CSS files -->
+    <link rel="stylesheet" href="../css/screen.css">
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print">
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Portfolio Showcase RSS Feed" href="index.xml" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Load jQuery Library (Only load once per page) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Load the Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrq6itjJPber61m46hdD6xu_fwZ5zvnrQ"></script>
+    <!-- Load the gMap jQuery plugin code -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/maplace-js/0.2.10/maplace.js"
+        integrity="sha256-J1skHm1U0elkQglbhaNEIMJP29H1Qq4SuGHmRC48ivQ=" crossorigin="anonymous"></script>
+    <!-- Load the jQuery code to define your usage of the Maplace plugin -->
+    <script src="../js/jquery.maplace.load.js"></script>
+    <!-- Headroom JS -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.12.0/headroom.min.js"
+        integrity="sha512-9UsrKTYzS9smDm2E58MLs0ACtOki+UC4bBq4iK5wi7lJycwqcaiHxr1bdEsIVoK0l5STEzLUdYyDdFQ5OEjczw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script defer src="../js/headroom.load.js"></script>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header-main">
+            <h1>NWTC <br> College of Business <br> Portfolio Showcase</h1>
+        </header>
+        <nav class="nav-main" data-brand-text="NWTC - Portfolio Showcase">
+            <label for="nav-main-toggle" class="nav-main-icon">MENU</label>
+            <input id="nav-main-toggle" type="checkbox">
+            <ul class="nav-main-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../programs/index.html">Programs</a></li>
+                <li><a href="index.html">Contact</a></li>
+                <li><a href="../archive/index.html">Archive</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-main">
+            <form action="https://maps.google.com/maps">
+                <div>
+                    <label for="saddr">Enter Your Address or Zip Code</label>
+                    <input id="saddr" name="saddr" required placeholder="Enter Your Address or Zip Code">
+                    <input type="hidden" name="daddr" value="2740 West Mason Street, Green Bay, WI">
+                    <input type="submit" value="Go">
+                </div>
+            </form>
+            <div id="gmap"></div>
+            <h2>Contact Us</h2>
+            <form method="post">
+                <ol>
+                    <li>
+                        <label for="name-first">First Name</label>
+                        <input id="name-first" name="name-first" required placeholder="Enter your first name">
+                        <label aria-hidden="true">Looks Good!</label>
+                    </li>
+                    <li>
+                        <label for="name-last">Last Name</label>
+                        <input id="name-last" name="name-last" required placeholder="Enter your last name">
+                        <label aria-hidden="true">Excellent!</label>
+                    </li>
+                    <li>
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" required placeholder="Enter your email address">
+                        <label aria-hidden="true">Email Is Valid!</label>
+                    </li>
+                    <li>
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required placeholder="Enter your message"></textarea>
+                        <label aria-hidden="true">Message Is Outstanding!</label>
+                    </li>
+                    <li>
+                        <input name="submit" type="submit" value="Submit">
+                    </li>
+                </ol>
+            </form>
+        </main>
+
+        <footer class="footer-main">
+            <p>
+                <a href="../../index.html">&copy; 2021 Adam</a>
+                <a
+                    href="javascript:void(location='https://jigsaw.w3.org/css-validator/validator?uri='+escape(location))">CSS</a>
+                <a href="javascript:void(location='https://validator.w3.org/nu/?doc='+escape(location))">HTML</a>
+                <a href="../index.xml">RSS</a>
+                <a href="../documentation/index.html">Documentation</a>
+            </p>
+        </footer>
+
+    </div>
+</body>
+
+</html>

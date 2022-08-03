@@ -1,0 +1,633 @@
+/* CSS Document */
+/*https://coolors.co/001219-005f73-0a9396-94d2bd-e9d8a6-ee9b00-ca6702-bb3e03-ae2012-9b2226*/
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+html {
+    font-family: 'Krona One', sans-serif;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100%;
+    margin: 0;
+    background: #005F73;
+}
+
+.container {
+    margin: 0 .625rem;
+    overflow: hidden;
+}
+
+.wrapper {
+    border: 2px solid #E9D8A6;
+    border-radius: 10px;
+    background: #EE9B00;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/**
+ * .header-main fixed
+ * - wrapper will slide under fixed nav
+ * - attact to top, right and left edge of screen
+ * - z-index is the stacking order - eg. layers in Photoshop
+ * - larger higher in the stack / negative lower in the stack
+ * - 100 is an arbitrary location with room below
+ */
+.header-main {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 100;
+    background: #9B2226;
+}
+
+/**
+ * .header-main h1
+ * - line-height 2 times the inherited font-size
+ * - float left - shink wrap the width around the content
+ * - postion relative - can be positioned
+ * - left: 50% find the left edge of the element and align with 50% left of parent element
+ * - translateX move the element based on the element size -50% plus half the size of the hamburger
+ * - this will center the h1 in the negative space to the right of the hamburger
+ * - not the center of the parent element
+ */
+.header-main h1 {
+    line-height: 2;
+    float: left;
+    position: relative;
+    left: 50%;
+    transform: translateX( calc( -50% + 32px ) );
+    margin: 0;
+    color: #fff;
+    font-family: 'Krona One', sans-serif;
+    font-weight: 200;
+    letter-spacing: 2px;
+    text-shadow: 0 -2px 2px rgba(0,0,0,0.6);
+}
+
+.nav-main {
+    position: relative;
+    width: 100%;
+}
+
+/* hide the check box - input type=checkbox*/
+.nav-main-menu-toggle {
+    display: none;
+}
+
+/* style the checkbox's label */
+.nav-main-menu-toggle-icon {
+    position: fixed;
+    z-index: 200;
+    width: 64px;
+    height: 64px;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+/* position the span in the label - this is the hamburger of the hamburger icon */
+.nav-main-menu-toggle-icon span {
+    width: 80%;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+}
+
+/**
+ * .nav-main-menu-toggle-icon span
+ * - build the hamburger icon
+ * - ::before and ::after are pseudo elements
+ * - they do not exist in the markup but we can style them
+ * - every element that has content has ::before and ::after
+ * - each line is 6px tall with a 3px border radius
+ */
+.nav-main-menu-toggle-icon span::before,
+.nav-main-menu-toggle-icon span, 
+.nav-main-menu-toggle-icon span::after {
+    background-color: #001219;
+    height: 6px;
+    position: absolute;
+    content: '';
+    border-radius: 3px;
+}
+
+.nav-main-menu-toggle-icon span::before {
+    width: 100%;
+    top: -10px;
+}
+
+.nav-main-menu-toggle-icon span::after {
+    width: 100%;
+    top: 10px;
+}
+
+/**
+ * .element ~ element
+ * - is the General sibling combinator
+ * - find .nav-main-menu-toggle:checked
+ * - when the input is checked...
+ * - style the .nav-main-menu-toggle-icon span
+ * - a trick to use the input type="checkbox" to trigger changes in our layout
+ */
+.nav-main-menu-toggle:checked ~ .nav-main-menu-toggle-icon span {
+    background-color: transparent;
+}
+
+.nav-main-menu-toggle:checked ~ .nav-main-menu-toggle-icon span::before,
+.nav-main-menu-toggle:checked ~ .nav-main-menu-toggle-icon span::after {
+    top: 0;
+}
+
+.nav-main-menu-toggle:checked ~ .nav-main-menu-toggle-icon span::before {
+    transform: rotate(-135deg);
+}
+
+.nav-main-menu-toggle:checked ~ .nav-main-menu-toggle-icon span::after {
+    transform: rotate(135deg);
+}
+
+/* style the UL left 0 width 0 can not be seen */
+.nav-main-menu {
+    position: fixed;
+    z-index: 50;
+    top: 4em;
+    left: 0;
+    width: 0;
+    height: calc(100vh - 3em);
+    background-color: hsla(210,3%,23%,0.96);
+    box-shadow: none;
+    overflow-y: auto;
+}
+
+/* when input checked show the UL */
+.nav-main-menu-toggle:checked ~ .nav-main-menu {
+    width: 100vw;
+    box-shadow: 0 0 0 100vw hsla(358, 64%, 37%, 0.40);
+    
+}
+
+/* style the anchor */
+.nav-main-menu a {
+  position: relative;
+  display: block;
+  font-size: 1.4em;
+  line-height: 1.8em;
+  font-weight: 300;
+  color: #fff;
+  text-decoration: none;
+  text-indent: 1.25rem;
+  margin: 4px 0;
+}
+
+/* style anchor :hover */
+.nav-main-menu a:hover {
+  text-indent: 2rem;
+  text-decoration: line-through;
+}
+
+
+/* style the anchor of the current page */
+.nav-main-menu-current-menu-item a {
+    color: #9B2226;
+    font-weight: 600;
+}
+
+.nav-main-menu-current-menu-item a:hover {
+    text-indent: 1.7rem;
+}
+
+.nav-main-menu-current-menu-item a:hover::before {
+  transform: translateX(-280%);
+  opacity: 1;
+}
+
+
+footer {
+    clear: both;
+    overflow: auto;
+    margin: 0 20px;
+    padding: 0 0 20px;
+    color: #001219;
+}
+
+div#footer p a{
+    color: #001219;
+    float: right;
+    padding: 4px;
+}
+
+/**
+ * Begin: UI - Cards Blog Posts
+ *
+ * Design is based on content from a blog
+ * Each Post Summary is placed in a Card component
+ * Cards are placed in OL LO
+ */
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+}
+
+.cards .card {
+    flex: 0 0 calc(100% - 20px);
+    display: flex;
+    margin: 10px;
+    min-width: 0;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.cards .card:last-child .card-section {
+    background: #AE2012;
+}
+
+.cards .card:first-child .card-section {
+    background: #CA6702;
+}
+
+.cards .card:nth-of-type(2) .card-section {
+    background: #E9D8A6;
+}
+
+.cards .card-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 100%;
+}
+
+.cards .card:hover {
+    border: 2px solid #001219;
+    border-radius: 0px;
+}
+
+.cards .card-section {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #0A9396;
+}
+
+
+
+.cards .card-section-excerpt {
+    width: 25%;
+}
+
+
+.cards .card .card-section-button {
+    align-self: center;
+    margin: 10px;
+    line-height: 2;
+    padding: 0 1em;
+    color: #001219;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 2px solid #001219;
+}
+
+.small {
+    font-size: .75em;
+}
+
+.large {
+    font-size: 1.25em;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.cards .card .card-section-button:hover {
+    background: #001219;
+    color: #E9D8A6;
+    border-radius: 0px;
+}
+
+svg {
+    width: 6em;
+    height: 6em;
+    padding-left: 30px;
+    padding-top: 20px;
+    stroke-width: 1;
+    fill: #001219;
+    vertical-align: middle;
+    margin-right: .5em;
+}
+
+
+.callout {
+    font-family: 'Krona One', sans-serif;
+    background: #005F73;
+    padding: 12px;
+    margin-top: 25px;
+    width: 97%;
+    margin: auto;
+    border: 2px solid #fff;
+    border-radius: 10px;
+}
+
+.callout-heading {
+    display: inline;
+    color: #EE9B00;
+    font-size: 2em;
+    text-transform: uppercase;
+    margin: 0 0 32px;
+}
+
+.callout-intro {
+    display: block;
+    color: white;
+    font-size: 1em;
+    margin: 0 0 16px;
+}
+
+.subscribe-newsletter {
+    transition: all .5s ease-in;
+    background: #0A9396;
+    border-radius: 1em;
+}
+
+.subscribe-newsletter {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 1px;
+}
+
+.subscribe-newsletter fieldset {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1em;
+    margin: 0;
+    border: none;
+}
+
+
+.subscribe-newsletter fieldset:first-child {
+    flex: 1 1 auto;
+}
+
+.subscribe-newsletter fieldset:last-child::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url("images/loader-circles-spin.svg") no-repeat center;
+    z-index: var(--z-index, -1);
+}
+
+.subscribe-newsletter input:not([type="radio"]):not([type="checkbox"]) {
+    -webkit-appearance: none;
+    border: none;
+    border-radius: 0;
+}
+
+.subscribe-newsletter input {
+    position: relative;
+    font-family: inherit;
+    font-size: 1.2em;
+    line-height: 2.4;
+    letter-spacing: 0.05em;
+    padding: 0 .5em;
+    margin: 0;
+    color: #001219;
+}
+
+.subscribe-newsletter input[type=email] {
+    background: #94D2BD;
+    flex: 0 0 80%;
+}
+
+.subscribe-newsletter input[type=email]:focus {
+    outline: none;
+    box-shadow: inset 0 0 0 2px #005F73;
+}
+
+.subscribe-newsletter input::placeholder {
+    position: relative;
+    color: #001219;
+    opacity: .4;
+}
+
+.subscribe-newsletter input::placeholder {
+    transition: 2s cubic-bezier(1, 1.65, 0.35, 1.32), opacity .25s ease;
+}
+
+.subscribe-newsletter input:focus::placeholder {
+    transform: translateX(100%);
+    transition: transform 1s cubic-bezier(0.15, 0.69, 0.7, -0.42), opacity 2s ease;
+    opacity: 0
+}
+
+.subscribe-newsletter input[type=submit],
+.subscribe-newsletter input[type=submit]:invalid {
+    background: #001219;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 0 1em;
+    transform-origin: right center;
+    transform: scale(1);
+}
+
+.subscribe-newsletter:valid input[type=submit] {
+    color: #E9D8A6;
+    background: #001219;
+    transform: scale(1.25);
+    box-shadow: -2px 2px 4px #001219, -2px -2px 4px #001219;
+}
+
+.subscribe-newsletter fieldset input[type=submit]:disabled {
+    background: #AE2012;
+    color: #001219;
+    transform: scale(1.25);
+    box-shadow: -2px 2px 4px #001219, -2px -2px 4px #001219;
+}
+
+.subscribe-newsletter label {
+    color: #005F73;
+    line-height: 1.625em;
+    padding: 0 .5em;
+    flex: 0 0 80%;
+}
+
+.subscribe-newsletter.sending {
+    background: #005F73;
+}
+
+.subscribe-newsletter.received {
+    background: #005F73;
+}
+
+.subscribe-newsletter .subscribe-newsletter-message-error {
+    background: #CA6702;
+}
+
+.subscribe-newsletter .subscribe-newsletter-message-success {
+    background: #005F73;
+    color: #BB3E03;
+    font-size: 1.6em;
+    flex: 1;
+    text-align: center;
+}
+
+/*
+Start Media Query
+    if screen is 48rem or larger (can use px or em)
+    rem is based on font size of root element
+        (16px * 48 = 768)
+    use the following rules
+*/
+
+@media (min-width: 48rem) {
+
+/*  override margin */
+    .container {
+        width: 96%;
+        max-width: 1000px;
+        margin: 20px auto;
+    }
+
+
+/*  override size and postion of header */
+    .header-main {
+        position: static;
+        height: 120px;
+        border: 2px solid #273E47;
+        margin: 20px;
+    }
+
+    .header-main h1 {
+        line-height: 120px;
+        font-size: 2.75em;
+        transform: translateX( -50% );
+    }
+    
+/*  hide the checkbox and the hamburger */
+    .nav-main-menu-toggle,
+    .nav-main-menu-toggle-icon {
+        display: none;
+    }
+    
+/*  override and reset to no style */
+    .nav-main-menu {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        z-index: 0;
+        top: auto;
+        left: auto;
+        width: auto;
+        height: auto;
+        transition: none;
+        background-color: transparent;
+        box-shadow: none;
+        overflow: hidden;
+        padding: 0 20px;
+    }
+ 
+/*  override and reset to no style */
+    .nav-main-menu-toggle:checked ~ .nav-main-menu {
+        width: auto;
+        box-shadow: none;
+    }
+    
+/*  basic style for navigation large screen */
+    .nav-main-menu li {
+        float: left;
+        margin: 0 10px 0 0;
+    }
+    
+/*  override and style for navigation large screen */
+    .nav-main-menu a {
+        position: relative;
+        text-indent: 0;
+        margin: 0;
+        border: 2px solid #001219;
+        transition: all .25s;
+        background: #9B2226;
+        padding: 0 40px;
+        overflow: hidden;
+        color: #fff;
+    }
+
+/*  style for navigation large screen */
+    .nav-main-menu a:hover {
+        text-indent: 0;
+        color: #E9D8A6;
+        border-radius: 10px;  
+        text-decoration: none;
+    }
+    
+    .nav-main-menu a:hover::before {
+        transform: translateX(920%);
+        background: hsla(0,0%,100%,0.00);
+    }
+    
+    
+    .nav-main-menu-current-menu-item a {
+        color: #001219;
+    }
+    
+    .nav-main-menu a:active {
+        background: #001219;   
+        color: #E9D8A6;
+    }
+    
+     .cards .card {
+        flex: 0 0 calc(100% - 20px);
+    }
+    
+    .callout-intro {
+        display: inline;
+        padding-top: 2px;
+        padding-left: 5px;
+    }
+    
+} /* Close: @media (min-width: 48rem) */

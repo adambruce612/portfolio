@@ -1,0 +1,53 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+         
+        <title>Portfolio Showcase</title>
+        <link>http://abruce.bitweb1.nwtc.edu/website-design/portfolio-showcase/index.html</link>
+        <atom:link href="http://abruce.bitweb1.nwtc.edu/website-design/portfolio-showcase/index.xml" rel="self" type="application/rss+xml" />
+        <description>Portfolio Showcase</description>
+        <language>en-us</language>
+        <pubDate>Mon, 27 Sep 2021 00:00:01 GMT</pubDate>
+        <lastBuildDate>Mon, 27 Sep 2021 01:00:00 GMT</lastBuildDate>
+        <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+        <generator>Adobe Dreamweaver CC</generator>
+        <managingEditor>adam.bruce@mymail.nwtc.edu</managingEditor>
+        <webMaster>webmaster@example.com (Ms. Webmaster)</webMaster>
+       
+        <item>
+            <title>01 - New Program Added</title>
+            <link>http://abruce.bitweb1.nwtc.edu/website-design/portfolio-showcase/programs/index.html</link>
+            <description>A new program has been added to the portfolio showcase.</description>
+            <pubDate>Mon, 27 Sep 2021 00:10:00 GMT</pubDate>
+            <guid>http://abruce.bitweb1.nwtc.edu/website-design/portfolio-showcase/programs/index.html</guid>
+        </item>
+        
+        <item>
+            <title>02 - New Portfolio Showcase Archive Updated Again</title>
+            <link>http://abruce.bitweb1.nwtc.edu/website-design/portfolio-showcase/archives/index.html</link>
+            <description>The Portfolio Showcase archive has been updated again.</description>
+            <pubDate>Mon, 27 Sep 2021 00:20:00 GMT</pubDate>
+            <guid>http://abruce.bitweb1.nwtc.edu/website-design/portfolio-showcase/archives/index.html</guid>
+        </item>
+        
+        <item>
+            <title>03 - New Portfolio Showcase Archive Updated Again</title>
+            <link>http://abruce.bitweb1.nwtc.edu/website-design/portfolio-showcase/archives/index.html</link>
+            <description>The Portfolio Showcase archive has been updated again.</description>
+            <pubDate>Mon, 27 Sep 2021 00:30:00 GMT</pubDate>
+            <guid>http://abruce.bitweb1.nwtc.edu/website-design/portfolio-showcase/archives/index.html</guid>
+        </item>
+        
+        <item>
+            <title>04 - New Portfolio Showcase Archive Updated Again</title>
+            <link>http://abruce.bitweb1.nwtc.edu/website-design/portfolio-showcase/archives/index.html</link>
+            <description>The Portfolio Showcase archive has been updated again.</description>
+            <pubDate>Mon, 27 Sep 2021 00:40:00 GMT</pubDate>
+            <guid>http://abruce.bitweb1.nwtc.edu/website-design/portfolio-showcase/archives/index.html</guid>
+        </item>
+ 
+    </channel>
+</rss>
+
+
+
+

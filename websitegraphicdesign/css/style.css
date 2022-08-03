@@ -1,0 +1,677 @@
+/* CSS Document */
+/*https://coolors.co/0b090a-161a1d-660708-a4161a-ba181b-e5383b-b1a7a6-d3d3d3-f5f3f4-ffffff*/
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+html {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100%;
+    margin: 0;
+    background: #0B090A;
+}
+
+.container {
+    margin: 0 .625rem;
+    overflow: hidden;
+}
+
+.wrapper {
+    border: 2px solid #F5F3F4;
+    border-radius: 10px;
+    background: #B1A7A6;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/**
+ * .header-main fixed
+ * - wrapper will slide under fixed nav
+ * - attact to top, right and left edge of screen
+ * - z-index is the stacking order - eg. layers in Photoshop
+ * - larger higher in the stack / negative lower in the stack
+ * - 100 is an arbitrary location with room below
+ */
+.header-main {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 100;
+    background-image: url(https://images.unsplash.com/photo-1511191348868-0ad83a175cce?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.8), 0px 4px 6px 0px rgba(34, 37, 48, 0.62);
+}
+
+/**
+ * .header-main h1
+ * - line-height 2 times the inherited font-size
+ * - float left - shink wrap the width around the content
+ * - postion relative - can be positioned
+ * - left: 50% find the left edge of the element and align with 50% left of parent element
+ * - translateX move the element based on the element size -50% plus half the size of the hamburger
+ * - this will center the h1 in the negative space to the right of the hamburger
+ * - not the center of the parent element
+ */
+.header-main h1 {
+    line-height: 2;
+    float: left;
+    position: relative;
+    left: 50%;
+    transform: translateX( calc( -50% + 32px ) );
+    margin: 0;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+    letter-spacing: 2px;
+    text-shadow: 0 -2px 2px rgba(0,0,0,0.6);
+}
+
+.nav-main {
+    position: relative;
+    width: 100%;
+}
+
+/* hide the check box - input type=checkbox*/
+.nav-main-menu-toggle {
+    display: none;
+}
+
+/* style the checkbox's label */
+.nav-main-menu-toggle-icon {
+    position: fixed;
+    z-index: 200;
+    width: 64px;
+    height: 64px;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+/* position the span in the label - this is the hamburger of the hamburger icon */
+.nav-main-menu-toggle-icon span {
+    width: 80%;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+}
+
+/**
+ * .nav-main-menu-toggle-icon span
+ * - build the hamburger icon
+ * - ::before and ::after are pseudo elements
+ * - they do not exist in the markup but we can style them
+ * - every element that has content has ::before and ::after
+ * - each line is 6px tall with a 3px border radius
+ */
+.nav-main-menu-toggle-icon span::before,
+.nav-main-menu-toggle-icon span, 
+.nav-main-menu-toggle-icon span::after {
+    background-color: #fff;
+    height: 6px;
+    position: absolute;
+    content: '';
+    border-radius: 3px;
+}
+
+.nav-main-menu-toggle-icon span::before {
+    width: 100%;
+    top: -10px;
+}
+
+.nav-main-menu-toggle-icon span::after {
+    width: 100%;
+    top: 10px;
+}
+
+/**
+ * .element ~ element
+ * - is the General sibling combinator
+ * - find .nav-main-menu-toggle:checked
+ * - when the input is checked...
+ * - style the .nav-main-menu-toggle-icon span
+ * - a trick to use the input type="checkbox" to trigger changes in our layout
+ */
+.nav-main-menu-toggle:checked ~ .nav-main-menu-toggle-icon span {
+    background-color: transparent;
+}
+
+.nav-main-menu-toggle:checked ~ .nav-main-menu-toggle-icon span::before,
+.nav-main-menu-toggle:checked ~ .nav-main-menu-toggle-icon span::after {
+    top: 0;
+}
+
+.nav-main-menu-toggle:checked ~ .nav-main-menu-toggle-icon span::before {
+    transform: rotate(-135deg);
+}
+
+.nav-main-menu-toggle:checked ~ .nav-main-menu-toggle-icon span::after {
+    transform: rotate(135deg);
+}
+
+/* style the UL left 0 width 0 can not be seen */
+.nav-main-menu {
+    position: fixed;
+    z-index: 50;
+    top: 4em;
+    left: 0;
+    width: 0;
+    height: calc(100vh - 3em);
+    background-color: hsla(210,3%,23%,0.96);
+    box-shadow: none;
+    overflow-y: auto;
+}
+
+/* when input checked show the UL */
+.nav-main-menu-toggle:checked ~ .nav-main-menu {
+    width: 100vw;
+    box-shadow: 0 0 0 100vw hsla(210,3%,23%,0.40);
+    
+}
+
+/* style the anchor */
+.nav-main-menu a {
+  position: relative;
+  display: block;
+  font-size: 1.4em;
+  line-height: 1.8em;
+  font-weight: 300;
+  color: #fff;
+  text-decoration: none;
+  text-indent: 1.25rem;
+  margin: 4px 0;
+}
+
+/* create and style the anchor's ::before pseudo element */
+.nav-main-menu a::before {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  transform: translateX(-280%);
+  content: "";
+  display: inline-block;
+  width: 10px;
+  background: #660708;
+}
+
+/* style anchor :hover */
+.nav-main-menu a:hover {
+  text-indent: 1.5rem;
+}
+
+/* style the ::before when :hover on anchor */
+.nav-main-menu a:hover::before {
+  transform: translateX(100vw);
+  opacity: 0;
+}
+
+/* style the anchor of the current page */
+.nav-main-menu-current-menu-item a {
+    text-indent: 1.7rem;
+    font-weight: 600;
+}
+
+.nav-main-menu-current-menu-item a:hover {
+    text-indent: 1.7rem;
+}
+
+.nav-main-menu-current-menu-item a:hover::before {
+  transform: translateX(-280%);
+  opacity: 1;
+}
+
+
+.featured-parks {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 0px;
+    color: #660708;
+    letter-spacing: 2px;
+}
+
+footer {
+    clear: both;
+    overflow: auto;
+    margin: 0 20px;
+    padding: 0 0 20px;
+    color: #fff;
+}
+
+div#footer p a{
+    color: #0B090A;
+    float: right;
+    padding: 4px;
+}
+
+/**
+ * Begin: UI - Cards Blog Posts
+ *
+ * Design is based on content from a blog
+ * Each Post Summary is placed in a Card component
+ * Cards are placed in OL LO
+ */
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+}
+
+.cards .card {
+    flex: 0 0 calc(100% - 20px);
+    display: flex;
+    margin: 10px;
+    min-width: 0;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.cards .card-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 100%;
+}
+
+.cards .card-figure {
+    position: relative;
+    margin: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+
+.cards .card-figure-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    transform-origin: 80% 80%;
+    transform: rotate(0) scale(1);
+    transition: all 2s;
+    filter: contrast(100%);
+}
+
+
+.cards .card-link:hover .card-figure-image {
+    filter: contrast(200%);
+}
+
+.cards .card:hover {
+    border: 2px solid #161A1D;
+}
+
+.cards .card-section {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.cards .card-section-title {
+    margin-bottom: 0;
+    text-align: center;
+    color: #A4161A;
+}
+
+
+.cards .card-section-excerpt {
+    flex-grow: 1;
+}
+
+
+.cards .card .card-section-button {
+    align-self: center;
+    margin: 10px;
+    line-height: 2;
+    padding: 0 1em;
+    color: #000;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.small {
+    font-size: .75em;     
+}
+
+.large {
+    font-size: 1.5em;
+}
+
+
+.cards .card .card-section-button:hover {
+    background: #000;
+    color: #fff;
+}
+
+.icon-circle-right{ 
+    display: inline-block;
+    float: right;
+    width: 2em;
+    height: 2em;
+    padding: 5px;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+    vertical-align: middle;
+    margin-right: .5em;
+}
+
+
+.callout {
+    font-family: 'Poppins', sans-serif;
+    background: #161A1D;
+    padding: 12px;
+    margin-top: 25px;
+    width: 97%;
+    margin: auto;
+    border: 2px solid #fff;
+    border-radius: 10px;
+}
+
+.callout-heading {
+    display: inline;
+    color: #fff;
+    font-size: 2em;
+    text-transform: uppercase;
+    margin: 0 0 32px;
+}
+
+.callout-intro {
+    display: block;
+    margin: 0 0 16px;
+    color: #fff;
+}
+
+.subscribe-newsletter {
+    transition: all .25s ease-in;
+    background: #BA181B;
+    border-radius: 1em;
+}
+
+.subscribe-newsletter {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 1px;
+}
+
+.subscribe-newsletter fieldset {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1em;
+    margin: 0;
+    border: none;
+}
+
+
+.subscribe-newsletter fieldset:first-child {
+    flex: 1 1 auto;
+}
+
+.subscribe-newsletter fieldset:last-child::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url("images/loader-circles-spin.svg") no-repeat center;
+    z-index: var(--z-index, -5);
+}
+
+.subscribe-newsletter input:not([type="radio"]):not([type="checkbox"]) {
+    -webkit-appearance: none;
+    border: none;
+    border-radius: 0;
+}
+
+.subscribe-newsletter input {
+    position: relative;
+    font-family: inherit;
+    font-size: 1.2em;
+    line-height: 2.4;
+    letter-spacing: 0.05em;
+    padding: 0 .5em;
+    margin: 0;
+    color: #0B090A;
+}
+
+.subscribe-newsletter input[type=email] {
+    background: #D3D3D3;
+    flex: 0 0 80%;
+}
+
+.subscribe-newsletter input[type=email]:focus {
+    outline: none;
+    box-shadow: inset 0 0 0 2px #161A1D;
+}
+
+.subscribe-newsletter input::placeholder {
+    position: relative;
+    color: #161A1D;
+    opacity: .4
+}
+
+.subscribe-newsletter input::placeholder {
+    transition: 1.5s cubic-bezier(1, 1.65, 0.35, 1.32), opacity .5s ease;
+}
+
+.subscribe-newsletter input:focus::placeholder {
+    transform: translateX(100%);
+    transition: transform 1s cubic-bezier(0.15, 0.69, 0.7, -0.42), opacity 2s ease;
+    opacity: 0
+}
+
+.subscribe-newsletter input[type=submit],
+.subscribe-newsletter input[type=submit]:invalid {
+    background: #161A1D;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 0 1em;
+    transform-origin: right center;
+    transform: scale(1);
+}
+
+.subscribe-newsletter:valid input[type=submit] {
+    color: #F5F3F4;
+    background: #660708;
+    transform: scale(1);
+    box-shadow: -2px 2px 4px #0B090A, -2px -2px 4px #0B090A;
+}
+
+.subscribe-newsletter fieldset input[type=submit]:disabled {
+    background: #0B090A;
+    color: #F5F3F4;
+    transform: scale(1);
+    box-shadow: 0 0 0px 0px #0B090A;
+}
+
+.subscribe-newsletter label {
+    color: #fff;
+    line-height: 1.625em;
+    padding: 0 .5em;
+    flex: 0 0 80%;
+}
+
+.subscribe-newsletter.sending {
+    background: #BA181B;
+}
+
+.subscribe-newsletter.received {
+    background: #0B090A;
+}
+
+.subscribe-newsletter .subscribe-newsletter-message-error {
+    background: #161A1D;
+}
+
+.subscribe-newsletter .subscribe-newsletter-message-success {
+    background: #0B090A;
+    color: #F5F3F4;
+    font-size: 1.6em;
+    flex: 1;
+    text-align: center;
+}
+
+/*
+Start Media Query
+    if screen is 48rem or larger (can use px or em)
+    rem is based on font size of root element
+        (16px * 48 = 768)
+    use the following rules
+*/
+
+@media (min-width: 48rem) {
+
+/*  override margin */
+    .container {
+        width: 96%;
+        max-width: 1000px;
+        margin: 20px auto;
+    }
+
+/*  override size and postion of header */
+    .header-main {
+        position: static;
+        height: 120px;
+        border-radius: 10px;
+        border: 2px solid gray;
+        margin: 20px;
+    }
+
+    .header-main h1 {
+        line-height: 120px;
+        font-size: 2.75em;
+        transform: translateX( -50% );
+    }
+    
+/*  hide the checkbox and the hamburger */
+    .nav-main-menu-toggle,
+    .nav-main-menu-toggle-icon {
+        display: none;
+    }
+    
+/*  override and reset to no style */
+    .nav-main-menu {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        z-index: 0;
+        top: auto;
+        left: auto;
+        width: auto;
+        height: auto;
+        transition: none;
+        background-color: transparent;
+        box-shadow: none;
+        overflow: hidden;
+        padding: 0 20px;
+    }
+ 
+/*  override and reset to no style */
+    .nav-main-menu-toggle:checked ~ .nav-main-menu {
+        width: auto;
+        box-shadow: none;
+    }
+    
+/*  basic style for navigation large screen */
+    .nav-main-menu li {
+        float: left;
+        margin: 0 10px 0 0;
+    }
+    
+/*  override and style for navigation large screen */
+    .nav-main-menu a {
+        position: relative;
+        display: block;
+        text-indent: 0;
+        margin: 0;
+        border: 2px solid gray;
+        border-radius: 5px;
+        transition: all .25s;
+        background: #161a1d;
+        padding: 0 40px;
+        overflow: hidden;
+        color: #fff;
+    }
+
+/*  style for navigation large screen */
+    .nav-main-menu a:hover {
+        text-indent: 0;
+        background: #BA181B;
+        border: 2px solid #fff;
+        
+    }
+    
+    .nav-main-menu a:hover::before {
+        transform: translateX(920%);
+        background: hsla(0,0%,100%,0.00);
+    }
+    
+    .nav-main-menu a::after {
+        transition: all .25s;
+        position: absolute;
+        content: attr(data-text);
+        color: #fff;
+        transform: translateX(-100%) scale(0);
+        font-weight: 600;
+    }
+    
+    .nav-main-menu-current-menu-item a {
+        background: #660708;
+    }
+    
+    .nav-main-menu a:active {
+        box-shadow: inset 0 4px 6px #b1a7a6;   
+    }
+    
+     .cards .card {
+        flex: 0 0 calc(50% - 20px);
+    }
+    
+    .callout-intro {
+        display: inline;
+        padding-top: 2px;
+        padding-left: 5px;
+    }
+    
+} /* Close: @media (min-width: 48rem) */

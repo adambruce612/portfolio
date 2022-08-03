@@ -1,0 +1,42 @@
+/* CSS Document */
+nav {
+    display: none;
+} /* Then remove all of the navigation rules */
+
+header {
+    text-align: center;
+        border: none;
+}
+
+h1 {
+    font-size: 1em;
+
+}
+
+.card img {
+    display: none;
+}
+
+.card-link {
+    text-align: center;
+}
+
+a:after { 
+     content: " ( " attr(href) " ) ";
+}
+
+footer :not(:first-child) {
+    display: none;
+}
+
+footer {
+    text-align: center;
+}
+
+/**
+ * Fancy Box
+ * - Remove the fancy box container 
+ */
+.fancybox-container {
+    display: none;
+}

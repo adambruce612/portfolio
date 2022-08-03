@@ -1,0 +1,646 @@
+/* CSS Document */
+/*https://coolors.co/ff6d00-ff7900-ff8500-ff9100-ff9e00-240046-3c096c-5a189a-7b2cbf-9d4edd*/
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+html {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100%;
+    margin: 0;
+    background: #240046;
+}
+
+.container {
+    margin: 0 .625rem;
+    overflow: hidden;
+}
+
+.wrapper {
+    border: 2px solid #9D4EDD;
+    background: #FF6D00;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/**
+ * .header-main fixed
+ * - wrapper will slide under fixed nav
+ * - attact to top, right and left edge of screen
+ * - z-index is the stacking order - eg. layers in Photoshop
+ * - larger higher in the stack / negative lower in the stack
+ * - 100 is an arbitrary location with room below
+ */
+.header-main {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 100;
+    background: #7B2CBF;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.8), 0px 4px 6px 0px rgba(34, 37, 48, 0.62);
+}
+
+/**
+ * .header-main h1
+ * - line-height 2 times the inherited font-size
+ * - float left - shink wrap the width around the content
+ * - postion relative - can be positioned
+ * - left: 50% find the left edge of the element and align with 50% left of parent element
+ * - translateX move the element based on the element size -50% plus half the size of the hamburger
+ * - this will center the h1 in the negative space to the right of the hamburger
+ * - not the center of the parent element
+ */
+.header-main h1 {
+    line-height: 2;
+    float: left;
+    position: relative;
+    left: 50%;
+    transform: translateX( calc( -50% + 32px ) );
+    margin: 0;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-shadow: 0 -2px 2px rgba(0,0,0,0.6);
+}
+
+.nav-main {
+    position: relative;
+    width: 100%;
+}
+
+/* hide the check box - input type=checkbox*/
+.nav-main-menu-toggle {
+    display: none;
+}
+
+/* style the checkbox's label */
+.nav-main-menu-toggle-icon {
+    position: fixed;
+    z-index: 200;
+    width: 64px;
+    height: 64px;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+/* position the span in the label - this is the hamburger of the hamburger icon */
+.nav-main-menu-toggle-icon span {
+    width: 80%;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+}
+
+/**
+ * .nav-main-menu-toggle-icon span
+ * - build the hamburger icon
+ * - ::before and ::after are pseudo elements
+ * - they do not exist in the markup but we can style them
+ * - every element that has content has ::before and ::after
+ * - each line is 6px tall with a 3px border radius
+ */
+.nav-main-menu-toggle-icon span::before,
+.nav-main-menu-toggle-icon span, 
+.nav-main-menu-toggle-icon span::after {
+    background-color: #fff;
+    height: 6px;
+    position: absolute;
+    content: '';
+    border-radius: 3px;
+}
+
+.nav-main-menu-toggle-icon span::before {
+    width: 100%;
+    top: -10px;
+}
+
+.nav-main-menu-toggle-icon span::after {
+    width: 100%;
+    top: 10px;
+}
+
+/**
+ * .element ~ element
+ * - is the General sibling combinator
+ * - find .nav-main-menu-toggle:checked
+ * - when the input is checked...
+ * - style the .nav-main-menu-toggle-icon span
+ * - a trick to use the input type="checkbox" to trigger changes in our layout
+ */
+.nav-main-menu-toggle:checked ~ .nav-main-menu-toggle-icon span {
+    background-color: transparent;
+}
+
+.nav-main-menu-toggle:checked ~ .nav-main-menu-toggle-icon span::before,
+.nav-main-menu-toggle:checked ~ .nav-main-menu-toggle-icon span::after {
+    top: 0;
+}
+
+.nav-main-menu-toggle:checked ~ .nav-main-menu-toggle-icon span::before {
+    transform: rotate(-90deg);
+    left: 10px;
+}
+
+.nav-main-menu-toggle:checked ~ .nav-main-menu-toggle-icon span::after {
+    transform: rotate(90deg);
+    right: 10px;
+}
+
+/* style the UL left 0 width 0 can not be seen */
+.nav-main-menu {
+    position: fixed;
+    z-index: 50;
+    top: 4em;
+    left: 0;
+    width: 0;
+    height: calc(100vh - 3em);
+    background-color: hsla(210,3%,23%,0.96);
+    box-shadow: none;
+    overflow-y: auto;
+}
+
+/* when input checked show the UL */
+.nav-main-menu-toggle:checked ~ .nav-main-menu {
+    width: 100vw;
+    box-shadow: 0 0 0 100vw hsla(210,3%,23%,0.40);
+    
+}
+
+/* style the anchor */
+.nav-main-menu a {
+  position: relative;
+  display: block;
+  font-size: 1.4em;
+  line-height: 1.8em;
+  font-weight: 300;
+  color: #fff;
+  text-decoration: none;
+  text-indent: .5em;
+  text-align: center;
+  margin: 4px 0;
+}
+
+
+/* style anchor :hover */
+.nav-main-menu a:hover {
+  text-decoration: underline;
+}
+
+/* style the ::before when :hover on anchor */
+.nav-main-menu a:hover::before {
+  transform: translateX(100vw);
+  opacity: 0;
+}
+
+/* style the anchor of the current page */
+.nav-main-menu-current-menu-item a {
+    font-weight: 600;
+}
+
+footer {
+    clear: both;
+    overflow: auto;
+    margin: 0 20px;
+    padding: 0 0 20px;
+    color: #fff;
+}
+
+
+div#footer p a{
+    color: white;
+    float: right;
+    padding: 4px;
+}
+
+
+/**
+ * Begin: UI - Cards Blog Posts
+ *
+ * Design is based on content from a blog
+ * Each Post Summary is placed in a Card component
+ * Cards are placed in OL LO
+ */
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+}
+
+.cards .card {
+    flex: 0 0 calc(100% - 20px);
+    display: flex;
+    margin: 10px;
+    min-width: 0;
+    border: 5px solid #fff;
+    overflow: hidden;
+    background: #3C096C;
+}
+
+.cards .card-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 100%;
+}
+
+.cards .card-figure {
+    position: relative;
+    margin: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+
+.cards .card-figure-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    transition: all .5s;
+}
+
+
+.cards .card-link:hover .card-figure-image {
+    filter: sepia(50%);
+}
+
+.cards .card:hover {
+    border-radius: 15px;
+    border: 5px solid #240046;
+    
+}
+
+.cards .card-section {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #3C096C;
+    color: #fff;
+}
+
+.cards .card-section-title {
+    margin-bottom: 0;
+    text-align: center;
+    color: #A4161A;
+}
+
+.cards .card-section-meta {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.cards .card-section-excerpt {
+    flex-grow: 1;
+}
+
+
+.cards .card .card-section-button {
+    align-self: center;
+    margin: 10px;
+    line-height: 2;
+    padding: 0 1em;
+    color: #fff;
+    cursor: pointer;
+    border: 2px solid #fff;
+}
+
+.small {
+    font-size: .80em;     
+}
+
+.large {
+    font-size: 1.15em;
+}
+
+.cards .card .card-section-button:hover {
+    border-radius: 10px;
+}
+
+.cards .card:last-of-type .card-section-excerpt {
+       text-align: center;
+    }
+
+.icon-calendar, .icon-phone{
+    display: inline-block;
+    float: left;
+    width: 2em;
+    height: 2em;
+    padding: 5px;
+    stroke-width: 1;
+    stroke: currentColor;
+    fill: currentColor;
+    vertical-align: middle;
+    margin-right: .5em;
+}
+
+.title {
+    text-align: center;
+}
+
+.callout {
+    font-family: 'Poppins', sans-serif;
+    background: #5A189A;
+    padding: 12px;
+    width: 97%;
+    margin: auto;
+    border: 5px solid #fff;
+    margin-top: 50px;
+}
+
+.callout-heading {
+    display: inline;
+    color: #fff;
+    font-size: 2em;
+    text-transform: uppercase;
+    margin: auto;
+}
+
+.subscribe-newsletter {
+    transition: all .25s ease-in;
+    background: #5A189A;
+    border-radius: 1em;
+}
+
+.subscribe-newsletter {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 1px;
+}
+
+.subscribe-newsletter fieldset {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1em;
+    margin: 0;
+    border: none;
+}
+
+
+.subscribe-newsletter fieldset:first-child {
+    flex: 1 1 auto;
+}
+
+.subscribe-newsletter fieldset:last-child::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url("images/loader-circles-spin.svg") no-repeat center;
+    z-index: var(--z-index, -1);
+}
+
+.subscribe-newsletter input:not([type="radio"]):not([type="checkbox"]) {
+    -webkit-appearance: none;
+    border: none;
+    border-radius: 0;
+}
+
+.subscribe-newsletter input {
+    position: relative;
+    font-family: inherit;
+    font-size: 1.2em;
+    line-height: 2.4;
+    letter-spacing: 0.05em;
+    padding: 0 .5em;
+    margin: 0;
+    color: #fff;
+}
+
+.subscribe-newsletter input[type=email] {
+    background: #9D4EDD;
+    flex: 0 0 80%;
+}
+
+.subscribe-newsletter input[type=email]:focus {
+    outline: none;
+    box-shadow: inset 0 0 0 2px #240046;
+}
+
+.subscribe-newsletter input::placeholder {
+    position: relative;
+    color: #fff;
+    opacity: .4
+}
+
+.subscribe-newsletter input::placeholder {
+    transition: 2s cubic-bezier(1, 1.65, 0.35, 1.32), opacity .25s ease;
+}
+
+.subscribe-newsletter input:focus::placeholder {
+    transform: translateX(100%);
+    transition: transform 1s cubic-bezier(0.15, 0.69, 0.7, -0.42), opacity 2s ease;
+    opacity: 0
+}
+
+.subscribe-newsletter input[type=submit],
+.subscribe-newsletter input[type=submit]:invalid {
+    background: #FF9100;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 0 1em;
+    transform-origin: right center;
+    transform: scale(1);
+}
+
+.subscribe-newsletter:valid input[type=submit] {
+    color: #fff;
+    background: #FF6D00;
+    transform: scale(1);
+    box-shadow: -2px 2px 4px #FF6D00, -2px -2px 4px #FF6D00;
+}
+
+.subscribe-newsletter fieldset input[type=submit]:disabled {
+    background: #9D4EDD;
+    color: #000;
+    transform: scale(1);
+    box-shadow: 0 0 0px 0px var(--color-black-60);
+}
+
+.subscribe-newsletter label {
+    color: #fff;
+    line-height: 1.625em;
+    padding: 0 .5em;
+    flex: 0 0 80%;
+}
+
+.subscribe-newsletter.sending {
+    background: #240046;
+}
+
+.subscribe-newsletter.received {
+    background: #240046;
+}
+
+.subscribe-newsletter .subscribe-newsletter-message-error {
+    background: #240046;
+}
+
+.subscribe-newsletter .subscribe-newsletter-message-success {
+    background: #240046;
+    color: #fff;
+    font-size: 1.6em;
+    flex: 1;
+    text-align: center;
+}
+
+/*
+Start Media Query
+    if screen is 48rem or larger (can use px or em)
+    rem is based on font size of root element
+        (16px * 48 = 768)
+    use the following rules
+*/
+
+@media (min-width: 48rem) {
+
+/*  override margin */
+    .container {
+        width: 96%;
+        max-width: 1000px;
+        margin: 20px auto;
+    }
+
+/*  override size and postion of header */
+    .header-main {
+        position: static;
+        height: 120px;
+        margin: 20px;
+    }
+
+    .header-main h1 {
+        line-height: 120px;
+        font-size: 2.75em;
+        transform: translateX( -50% );
+    }
+    
+/*  hide the checkbox and the hamburger */
+    .nav-main-menu-toggle,
+    .nav-main-menu-toggle-icon {
+        display: none;
+    }
+    
+/*  override and reset to no style */
+    .nav-main-menu {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        z-index: 0;
+        top: auto;
+        left: auto;
+        width: auto;
+        height: auto;
+        transition: none;
+        background-color: transparent;
+        box-shadow: none;
+        overflow: hidden;
+        padding: 0 20px;
+    }
+ 
+/*  override and reset to no style */
+    .nav-main-menu-toggle:checked ~ .nav-main-menu {
+        width: auto;
+        box-shadow: none;
+    }
+    
+/*  basic style for navigation large screen */
+    .nav-main-menu li {
+        float: left;
+        margin: auto;
+        padding: 0px 30px;
+    }
+    
+/*  override and style for navigation large screen */
+    .nav-main-menu a {
+        position: relative;
+        text-indent: 0;
+        margin: 0;
+        border: 5px solid #3C096C;
+        transition: all .25s;
+        background: #7B2CBF;
+        padding: 0 20px;
+        overflow: hidden;
+        color: #fff;
+    }
+
+/*  style for navigation large screen */
+    .nav-main-menu a:hover {
+        text-decoration: underline;
+        text-indent: 0;
+        
+    }
+    
+    .nav-main-menu-current-menu-item a {
+       background-color: #240046;
+       border: 5px solid #7B2CBF;
+    }
+    
+    .nav-main-menu a:active {
+        font-size: 1.5em;   
+    }
+    
+    .cards .card {
+        flex: 0 0 calc(25% - 20px);
+    }
+    
+    .cards .card:last-of-type {
+        flex: 0 0 calc(100% - 20px);
+    }
+    
+    .cards .card:last-of-type .card-figure-image {
+        height: 200px;
+        width: 100%;
+    }
+    
+  .callout {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+    
+    
+} /* Close: @media (min-width: 48rem) */
